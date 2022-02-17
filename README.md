@@ -1,6 +1,7 @@
 # Twitter Clone
+[![CircleCI](https://circleci.com/gh/JamesHsu333/go-twitter/tree/main.svg?style=svg)](https://circleci.com/gh/JamesHsu333/go-twitter/tree/main)
 ## Introduction
-A Twitter clone created with Golang, PostgreSQL, Redis, VueJS, Vite and element-plus intergrated Prometheus, Grafana and Jaeger.
+A Twitter clone created with Golang, PostgreSQL, Redis, VueJS, Vite and element-plus integrated Prometheus, Grafana and Jaeger.
 # Using tech
 ## Frontend
 - [NodeJS](https://nodejs.org/en/)
