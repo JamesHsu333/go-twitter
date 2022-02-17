@@ -1,0 +1,70 @@
+.app-container {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.main-container {
+    min-height: 100%;
+    transition: margin-left 0.28s;
+    margin-left: 300px;
+    position: relative;
+    padding-top: 56px;
+}
+
+.sidebar-container {
+    transition: width 0.28s;
+    width: 300px !important;
+    background-color: #fff;
+    height: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    padding-top: 56px;
+    border-right: solid 1px;
+    border-right-color: #e6e6e6;
+}
+
+.sidebar-container a {
+    display: inline-block;
+    width: 100%;
+}
+
+.sidebar-container i {
+    margin-right: 16px;
+}
+
+.sidebar-container .horizontal-collapse-transition {
+    transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
+}
+
+.sidebar-container .scrollbar-wrapper {
+    overflow-x: hidden !important;
+}
+
+.sidebar-container .el-scrollbar__bar.is-vertical {
+    right: 0px;
+}
+
+.sidebar-container .el-scrollbar {
+    height: 100%;
+}
+
+.sidebar-container .is-horizontal {
+    display: none;
+}
+
+.sidebar-container a {
+    display: inline-block;
+    width: 100%;
+    overflow: hidden;
+}
+
+.sidebar-container .el-menu {
+    border: 0 !important;
+}
+
+.sidebar-container .el-menu-item {
+    border-radius: 40px;
+}

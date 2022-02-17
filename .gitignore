@@ -1,0 +1,43 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Dependency directories (remove the comment below to include it)
+ vendor/
+ media
+
+# Config files
+config/apple_config_files
+/config/configs.env
+/config/config_file.go
+
+# Enviroment files
+envs/
+main
+.idea
+pgdata
+vendor
+
+# Avatars storage directory
+assets/images/*.jpg
+assets/images/*.jpeg
+assets/images/*.png
+
+# Static files
+*.log
+
+# Web static files
+web/ui/node_modules
+web/ui/.DS_Store
+web/ui/dist
+web/ui/dist-ssr
+web/ui/*.local

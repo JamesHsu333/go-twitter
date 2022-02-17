@@ -1,0 +1,53 @@
+version: 2.1
+workflows:
+  build-workflow:
+    jobs:
+      - lint
+      - build
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.17
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - b8:f2:4e:d0:e9:f5:f6:0a:dd:29:7a:16:0a:0d:19:d1
+      - restore_cache: # restores saved cache if no changes are detected since last run
+          keys:
+            - go-mod-v4-{{ checksum "go.sum" }}
+      - run:
+          name: Run unit test
+          command: |
+            go mod download
+            go test -cover ./...
+      - save_cache:
+          key: go-mod-v4-{{ checksum "go.sum" }}
+          paths:
+            - "/go/pkg/mod"
+      - run:
+          name: Setting environment variables
+          command: |
+            echo 'export TAG=0.1.${CIRCLE_BUILD_NUM}' >> $BASH_ENV
+            echo 'export IMAGE_NAME=go-twitter' >> $BASH_ENV 
+      - setup_remote_docker:
+          version: 19.03.13
+          docker_layer_caching: true
+      - run:
+          name: Build and push Docker image
+          command: |
+            docker build -t $DOCKER_LOGIN/$IMAGE_NAME:$TAG .
+            echo $DOCKER_PWD | docker login -u $DOCKER_LOGIN --password-stdin
+            docker push $DOCKER_LOGIN/$IMAGE_NAME:$TAG
+      - run:
+          name: Deploy app to Production Server via Docker
+          command: |
+            ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_HOST "/bin/bash ./deploy_app.sh $DOCKER_LOGIN/$IMAGE_NAME:$TAG"
+  lint:
+    docker:
+      - image: golangci/golangci-lint:latest
+    steps:
+      - checkout
+      - run:
+          name: Start linter
+          command: golangci-lint run ./...

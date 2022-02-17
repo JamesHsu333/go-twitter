@@ -1,0 +1,5 @@
+DROP TABLE IF EXISTS users CASCADE;
+
+
+-- DROP EXTENSION IF EXISTS postgis_topology;
+-- DROP EXTENSION IF EXISTS postgis;
