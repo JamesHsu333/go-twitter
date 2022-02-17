@@ -12,7 +12,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - b8:f2:4e:d0:e9:f5:f6:0a:dd:29:7a:16:0a:0d:19:d1
+            - 64:6f:38:69:73:fc:84:17:0e:89:56:52:0d:0f:f8:94
       - restore_cache: # restores saved cache if no changes are detected since last run
           keys:
             - go-mod-v4-{{ checksum "go.sum" }}

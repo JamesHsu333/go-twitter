@@ -3,7 +3,7 @@ server:
   Description: Simple Prototype for Twitter
   Port: :5000
   PprofPort: :5555
-  Mode: Development
+  Mode: Production
   JwtSecretKey: secretkey
   CookieName: jwt-token
   ReadTimeout: 5
@@ -16,10 +16,10 @@ server:
   Debug: false
 
 logger:
-  Development: true
+  Development: false
   DisableCaller: false
   DisableStacktrace: false
-  Encoding: console
+  Encoding: json
   Level: info
   Filename: assets/access.log
   FileMaxSize: 10
